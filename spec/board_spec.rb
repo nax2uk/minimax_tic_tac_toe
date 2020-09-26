@@ -41,6 +41,14 @@ describe Board do
             end.to output("[\"X\", \"X\", \"X\"]\n[\"O\", \"X\", \"O\"]\n[\"\", \"\", \"\"]\n").to_stdout
         end
     end
+    context "#set_column" do
+        it "sets the board column correctly" do
+            board.set_column("1",["X","X","X"])
+            expect do 
+                board.draw_board
+            end.to output("[\"X\", \"\", \"\"]\n[\"X\", \"\", \"\"]\n[\"X\", \"\", \"\"]\n").to_stdout
+        end
+    end
 
   
 end
