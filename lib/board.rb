@@ -33,7 +33,7 @@ class Board
     end
 
     def get_column(number)
-        index = number - 1
+        index = number.to_i - 1
         column = []
         column << @board_array[0][index] << @board_array[1][index] << @board_array[2][index]
     end

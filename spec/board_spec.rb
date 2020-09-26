@@ -47,17 +47,33 @@ describe Board do
     end
 
     context "#get_row" do
-        it "gets the board row correctly after board is first created" do
+        it "gets the correct board row after board is first created" do
             expect(board.get_row("A")).to eql(["","",""])
             expect(board.get_row("B")).to eql(["","",""])
             expect(board.get_row("C")).to eql(["","",""])
         end
-        it "gets the board row correctly after set_row is called" do
+        it "gets the correct board row after set_row is called" do
             board.set_row("C",["O","X","X"])
             expect(board.get_row("C")).to eq(["O","X","X"])
         end
         
     end
+
+    context "#get_column" do
+        it "gets the correct board column when board is first created" do
+            expect(board.get_column("1")).to eq(["","",""])
+        end
+        it "gets the correct board column when 'X' is added to location(A,1)" do
+            board.set_elem("X","A","1")
+            expect(board.get_column("1")).to eq(["X","",""])
+        end
+        it "gets the correct board column when 'O' is added to location(B,2) and 'X' is added to location(C,2)" do
+            board.set_elem("X","B","2")
+            board.set_elem("O","C","2")
+            expect(board.get_column("2")).to eq(["","X","O"])
+        end
+    end
+
     context "#set_row" do
         it "sets the board row correctly" do
             board.set_row("A",["X","X","X"])

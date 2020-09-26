@@ -8,4 +8,8 @@ class Logic
     def same_entries_in_a_row?(board_row)
         board_row.uniq.size < 2  && board_row[0] != ""
     end
+    # def same_entries_in_a_column?(board_column)
+    #     temp_array = []
+    #     temp_array << 
+    # end
 end

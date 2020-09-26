@@ -40,4 +40,7 @@ describe Logic do
             expect(logic.check_win_horizontal?(board)).to eql(false)
         end
     end
+    context "#same_entries_in_a_column?" do
+        
+    end
 end
