@@ -41,6 +41,16 @@ describe Logic do
         end
     end
     context "#same_entries_in_a_column?" do
-        
+        it "return false if board has just been created with no entries in the third column" do
+            expect(logic.same_entries_in_a_column?(board.get_column("3"))).to eql(false)
+        end
+        it "return true if board has all 'X's in the first column" do
+            board.set_column("1",["X","X","X"])
+            expect(logic.same_entries_in_a_column?(board.get_column("1"))).to eq(true)
+        end
+        it "return fale if board has one 'X' and one 'O' in the second column" do
+            board.set_column("2",["X","","O"])
+            expect(logic.same_entries_in_a_column?(board.get_column("1"))).to eq(false)
+        end
     end
 end
