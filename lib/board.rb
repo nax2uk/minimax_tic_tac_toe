@@ -15,6 +15,14 @@ class Board
         p @board_array[2]
     end
 
+    def reset_board
+        @board_array.each { |board_row| 
+            board_row.each_with_index { |elem, index|
+                board_row[index] = ""
+            }
+        }
+    end
+
     def set_elem(symbol, row, column)
         # @board_array[0][0] = symbol
         @board_array[ROW[row]][column.to_i - 1] = symbol

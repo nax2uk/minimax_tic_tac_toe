@@ -16,6 +16,15 @@ describe Board do
         end
     end
 
+    context "#reset_board" do
+        it "prints to console an empty board" do
+            board.set_elem("X", "A", "1" )
+            expect do
+                board.reset_board
+                board.draw_board
+            end.to output("[\"\", \"\", \"\"]\n[\"\", \"\", \"\"]\n[\"\", \"\", \"\"]\n").to_stdout
+        end
+    end
     context "#set_elem" do
         it "sets the an 'X' at the correct location (A, 1) on the board" do
             expect do   
