@@ -14,14 +14,7 @@ class Board
         p board_array[1]
         p board_array[2]
     end
-    # def row_number(letter)
-    #     row={
-    #         "A"=>0,
-    #         "B"=>1,
-    #         "C"=>2
-    #     }
-    #     row[letter]
-    # end
+
     def get_row(row_letter)
         board_array[ROW[row_letter]]
     end
