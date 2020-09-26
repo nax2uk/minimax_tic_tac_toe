@@ -40,6 +40,7 @@ describe Logic do
             expect(logic.check_win_horizontal?(board)).to eql(false)
         end
     end
+
     context "#same_entries_in_a_column?" do
         it "return false if board has just been created with no entries in the third column" do
             expect(logic.same_entries_in_a_column?(board.get_column("3"))).to eql(false)
@@ -52,5 +53,23 @@ describe Logic do
             board.set_column("2",["X","","O"])
             expect(logic.same_entries_in_a_column?(board.get_column("1"))).to eq(false)
         end
+    end
+
+    context "#check_win_vertical?" do
+    it "returns false if board has no entries" do
+        expect(logic.check_win_vertical?(board)).to eql(false)
+    end
+    it "returns true if board has all 'X's in first column" do
+        board.set_column("1",["X","X","X"])
+        expect(logic.check_win_vertical?(board)).to eql(true)
+    end
+    it "returns true if board has all 'X's in last column" do
+        board.set_column("3",["X","X","X"])
+        expect(logic.check_win_vertical?(board)).to eql(true)
+    end
+    it "returns false if board has not all 'X's in last column" do
+        board.set_column("3",["X","","X"])
+        expect(logic.check_win_vertical?(board)).to eql(false)
+    end
     end
 end
