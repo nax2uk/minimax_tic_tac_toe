@@ -16,6 +16,27 @@ describe Board do
         end
     end
 
+    context "#set_elem" do
+        it "sets the an 'X' at the correct location (A, 1) on the board" do
+            expect do   
+                board.set_elem("X", "A", "1" )
+                board.draw_board
+            end.to output("[\"X\", \"\", \"\"]\n[\"\", \"\", \"\"]\n[\"\", \"\", \"\"]\n").to_stdout
+        end
+        it "sets the a 'O' at the correct location (B, 2) on the board" do
+            expect do   
+                board.set_elem("O", "B", "2" )
+                board.draw_board
+            end.to output("[\"\", \"\", \"\"]\n[\"\", \"O\", \"\"]\n[\"\", \"\", \"\"]\n").to_stdout
+        end
+        it "sets the a 'O' at the correct location (C, 2) on the board" do
+            expect do   
+                board.set_elem("O", "C", "2" )
+                board.draw_board
+            end.to output("[\"\", \"\", \"\"]\n[\"\", \"\", \"\"]\n[\"\", \"O\", \"\"]\n").to_stdout
+        end
+    end
+
     context "#get_row" do
         it "gets the board row correctly after board is first created" do
             expect(board.get_row("A")).to eql(["","",""])
