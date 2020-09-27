@@ -74,6 +74,24 @@ describe Board do
         end
     end
 
+    context "#get_diagonal" do
+        it "throws an error when argument is not 'left' or 'right'" do
+            expect { board.get_diagonal("top") }.to raise_error(ArgumentError)
+        end
+        it "returns an array with the elements at the left diagonal position" do
+            board.set_elem("X","A","1")
+            board.set_elem("O","B","2")
+            board.set_elem("X","C","3")
+            expect(board.get_diagonal("left")).to eq(["X","O","X"])
+        end
+        it "returns an array with the elements at the right diagonal position" do
+            board.set_elem("O","A","3")
+            board.set_elem("O","B","2")
+            board.set_elem("O","C","1")
+            expect(board.get_diagonal("right")).to eq(["O","O","O"])
+        end
+    end
+
     context "#set_row" do
         it "sets the board row correctly" do
             board.set_row("A",["X","X","X"])

@@ -24,8 +24,8 @@ class Board
     end
 
     def set_elem(symbol, row, column)
-        # @board_array[0][0] = symbol
         @board_array[ROW[row]][column.to_i - 1] = symbol
+        #p @board_array[ROW[row]][column.to_i - 1]
     end
 
     def get_row(row_letter)
@@ -36,6 +36,19 @@ class Board
         index = number.to_i - 1
         column = []
         column << @board_array[0][index] << @board_array[1][index] << @board_array[2][index]
+    end
+
+    def get_diagonal(direction)
+        diagonal = []
+        case direction
+        when "left"
+            p @board_array[0][0]
+            diagonal << @board_array[0][0] << @board_array[1][1] << @board_array[2][2]
+        when "right"
+            diagonal << @board_array[0][2] << @board_array[1][1] << @board_array[2][0]
+        else    
+            raise ArgumentError.new("Input must 'left' or 'right'")
+        end
     end
 
     def set_row(row_letter, row_entries_array)

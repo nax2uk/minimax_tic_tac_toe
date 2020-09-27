@@ -56,20 +56,23 @@ describe Logic do
     end
 
     context "#check_win_for_any_vertical?" do
-    it "returns false if board has no entries" do
-        expect(logic.check_win_for_any_vertical?(board)).to eql(false)
+        it "returns false if board has no entries" do
+            expect(logic.check_win_for_any_vertical?(board)).to eql(false)
+        end
+        it "returns true if board has all 'X's in first column" do
+            board.set_column("1",["X","X","X"])
+            expect(logic.check_win_for_any_vertical?(board)).to eql(true)
+        end
+        it "returns true if board has all 'X's in last column" do
+            board.set_column("3",["X","X","X"])
+            expect(logic.check_win_for_any_vertical?(board)).to eql(true)
+        end
+        it "returns false if board has not all 'X's in last column" do
+            board.set_column("3",["X","","X"])
+            expect(logic.check_win_for_any_vertical?(board)).to eql(false)
+        end
     end
-    it "returns true if board has all 'X's in first column" do
-        board.set_column("1",["X","X","X"])
-        expect(logic.check_win_for_any_vertical?(board)).to eql(true)
-    end
-    it "returns true if board has all 'X's in last column" do
-        board.set_column("3",["X","X","X"])
-        expect(logic.check_win_for_any_vertical?(board)).to eql(true)
-    end
-    it "returns false if board has not all 'X's in last column" do
-        board.set_column("3",["X","","X"])
-        expect(logic.check_win_for_any_vertical?(board)).to eql(false)
-    end
+
+    context "#same_entries_in_a_diagonal?"do
     end
 end
