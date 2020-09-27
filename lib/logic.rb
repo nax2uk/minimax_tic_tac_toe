@@ -22,4 +22,8 @@ class Logic
     def same_entries_in_a_column?(board_column)
         self.same_entries_in_a_row?(board_column)
     end
+
+    def same_entries_in_a_diagonal?(board_diagonal)
+        self.same_entries_in_a_row?(board_diagonal)
+    end
 end

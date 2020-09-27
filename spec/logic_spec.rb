@@ -73,6 +73,18 @@ describe Logic do
         end
     end
 
-    context "#same_entries_in_a_diagonal?"do
+    context "#same_entries_in_a_diagonal?" do
+        it "returns false if board does not have all entries in the left diagonal the same" do
+            board.set_elem("X","A","1")
+            board.set_elem("","B","2")
+            board.set_elem("X","C","3")
+            expect(logic.same_entries_in_a_diagonal?(board.get_diagonal("left"))).to eq(false)
+        end
+        it "returns true if board does not have all entries in the right diagonal the same" do
+            board.set_elem("O","A","3")
+            board.set_elem("O","B","2")
+            board.set_elem("O","C","1")
+            expect(logic.same_entries_in_a_diagonal?(board.get_diagonal("right"))).to eq(true)
+        end
     end
 end
