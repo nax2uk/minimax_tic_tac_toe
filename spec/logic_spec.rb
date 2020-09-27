@@ -87,4 +87,49 @@ describe Logic do
             expect(logic.same_entries_in_a_diagonal?(board.get_diagonal("right"))).to eq(true)
         end
     end
+
+    context "#check_win_at_position? - assume that position of latest entry is given" do
+        context "-checks for a horizontal win" do
+            it "returns false if no horizontal win and latest entry is at (A,1)" do
+                board.set_elem("O","A","3")
+                board.set_elem("X","B","2")
+                board.set_elem("O","C","1")
+                expect(logic.check_win_at_position?(board, "A", "1" )).to eq(false)
+            end
+            it "returns true if there is a horizontal win when latest entry is at (B,2)" do
+                board.set_elem("O","B","1")
+                board.set_elem("O","B","2")
+                board.set_elem("O","B","3")
+                expect(logic.check_win_at_position?(board, "B", "2" )).to eq(true)
+            end
+        end
+        context "-checks for a vertical win" do
+            it "returns false if no vertical win and latest entry is at (A,1)" do
+                board.set_elem("O","A","3")
+                board.set_elem("X","B","2")
+                board.set_elem("O","C","1")
+                expect(logic.check_win_at_position?(board, "A", "1" )).to eq(false)
+            end
+            it "returns true if there is a vertical win when latest entry is at (B,2)" do
+                board.set_elem("O","A","2")
+                board.set_elem("O","B","2")
+                board.set_elem("O","C","2")
+                expect(logic.check_win_at_position?(board, "B", "2" )).to eq(true)
+            end
+        end
+        context "-checks for a diagonal win" do
+            it "returns false if no diagonal win and latest entry is at (A,1)" do
+                board.set_elem("O","A","1")
+                board.set_elem("O","B","2")
+                board.set_elem("O","C","1")
+                expect(logic.check_win_at_position?(board, "A", "1" )).to eq(false)
+            end
+            # it "returns true if there is a vertical win when latest entry is at (B,2)" do
+            #     board.set_elem("O","A","2")
+            #     board.set_elem("O","B","2")
+            #     board.set_elem("O","C","2")
+            #     expect(logic.check_win_at_position?(board, "B", "2" )).to eq(true)
+            # end
+        end
+    end
 end

@@ -1,6 +1,14 @@
 class Logic
-    def check_win(board)
-        #check_win_horizontal?(board) || check_win_vertical?(board)
+    def check_win_at_position?(board, latest_row_entry, latest_column_entry)
+        board_row = board.get_row(latest_row_entry)
+        board_column = board.get_column(latest_column_entry)
+        board_left_diagonal = board.get_diagonal("left")
+        board_right_diagonal = board.get_diagonal("right")
+ 
+        self.same_entries_in_a_row?(board_row) || 
+        self.same_entries_in_a_column?(board_column) || 
+        self.same_entries_in_a_diagonal?(board_left_diagonal) || 
+        self.same_entries_in_a_diagonal?(board_right_diagonal)
     end
 
     def check_win_for_any_horizontal?(board)

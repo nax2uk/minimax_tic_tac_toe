@@ -1,5 +1,5 @@
 class Board
-    attr_accessor :board_array
+    attr_accessor :board_array, :ROW
 
     ROW = {
         'A'=>0,
@@ -8,6 +8,7 @@ class Board
 
     def initialize
         @board_array = Array.new(3) { Array.new(3,"") }
+        @ROW = ROW
     end
     def draw_board
         p @board_array[0]
