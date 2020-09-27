@@ -38,7 +38,15 @@ class Board
     end
 
     def is_entry_on_a_left_diagonal?(row, column)
-        ROW[row] == 0 && COL[column] == 0 || ROW[row] == 1 && COL[column] == 1 || ROW[row] == 2 && COL[column] == 2
+        ROW[row] == 0 && COL[column] == 0 || 
+        ROW[row] == 1 && COL[column] == 1 || 
+        ROW[row] == 2 && COL[column] == 2
+    end
+
+    def is_entry_on_a_right_diagonal?(row, column)
+        ROW[row] == 0 && COL[column] == 2 || 
+        ROW[row] == 1 && COL[column] == 1 || 
+        ROW[row] == 2 && COL[column] == 0
     end
 
     def get_row(row)
