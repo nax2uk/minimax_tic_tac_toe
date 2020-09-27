@@ -18,33 +18,33 @@ describe Board do
 
     context "#reset_board" do
         it "prints to console an empty board" do
-            board.set_elem("X", "A", "1" )
+            board.set_entry("X", "A", "1" )
             expect do
                 board.reset_board
                 board.draw_board
             end.to output("[\"\", \"\", \"\"]\n[\"\", \"\", \"\"]\n[\"\", \"\", \"\"]\n").to_stdout
         end
     end
-    context "#set_elem" do
+    context "#set_entry" do
         it "raises an error if symbol input is not 'X','O' or '' " do
-            expect { board.set_elem("t") }.to raise_error(ArgumentError)
+            expect { board.set_entry("t") }.to raise_error(ArgumentError)
             board.draw_board
         end
         it "sets the an 'X' at the correct location (A, 1) on the board" do
             expect do   
-                board.set_elem("X", "A", "1" )
+                board.set_entry("X", "A", "1" )
                 board.draw_board
             end.to output("[\"X\", \"\", \"\"]\n[\"\", \"\", \"\"]\n[\"\", \"\", \"\"]\n").to_stdout
         end
         it "sets the a 'O' at the correct location (B, 2) on the board" do
             expect do   
-                board.set_elem("O", "B", "2" )
+                board.set_entry("O", "B", "2" )
                 board.draw_board
             end.to output("[\"\", \"\", \"\"]\n[\"\", \"O\", \"\"]\n[\"\", \"\", \"\"]\n").to_stdout
         end
         it "sets the a 'O' at the correct location (C, 2) on the board" do
             expect do   
-                board.set_elem("O", "C", "2" )
+                board.set_entry("O", "C", "2" )
                 board.draw_board
             end.to output("[\"\", \"\", \"\"]\n[\"\", \"\", \"\"]\n[\"\", \"O\", \"\"]\n").to_stdout
         end
@@ -68,12 +68,12 @@ describe Board do
             expect(board.get_column("1")).to eq(["","",""])
         end
         it "gets the correct board column when 'X' is added to location(A,1)" do
-            board.set_elem("X","A","1")
+            board.set_entry("X","A","1")
             expect(board.get_column("1")).to eq(["X","",""])
         end
         it "gets the correct board column when 'O' is added to location(B,2) and 'X' is added to location(C,2)" do
-            board.set_elem("X","B","2")
-            board.set_elem("O","C","2")
+            board.set_entry("X","B","2")
+            board.set_entry("O","C","2")
             expect(board.get_column("2")).to eq(["","X","O"])
         end
     end
@@ -83,15 +83,15 @@ describe Board do
             expect { board.get_diagonal("top") }.to raise_error(ArgumentError)
         end
         it "returns an array with the elements at the left diagonal position" do
-            board.set_elem("X","A","1")
-            board.set_elem("O","B","2")
-            board.set_elem("X","C","3")
+            board.set_entry("X","A","1")
+            board.set_entry("O","B","2")
+            board.set_entry("X","C","3")
             expect(board.get_diagonal("left")).to eq(["X","O","X"])
         end
         it "returns an array with the elements at the right diagonal position" do
-            board.set_elem("O","A","3")
-            board.set_elem("O","B","2")
-            board.set_elem("O","C","1")
+            board.set_entry("O","A","3")
+            board.set_entry("O","B","2")
+            board.set_entry("O","C","1")
             expect(board.get_diagonal("right")).to eq(["O","O","O"])
         end
     end

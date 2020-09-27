@@ -10,6 +10,7 @@ class Board
         @board_array = Array.new(3) { Array.new(3,"") }
         @ROW = ROW
     end
+
     def draw_board
         p @board_array[0]
         p @board_array[1]
@@ -24,7 +25,7 @@ class Board
         }
     end
 
-    def set_elem(symbol, row, column)
+    def set_entry(symbol, row, column)
         if symbol == 'X' || 'O' || ''
             @board_array[ROW[row]][column.to_i - 1] = symbol
         else
