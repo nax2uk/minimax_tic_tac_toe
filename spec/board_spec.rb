@@ -50,6 +50,19 @@ describe Board do
         end
     end
 
+    context "#is_entry_on_a_left_diagonal?" do 
+        it "returns false if entry is not on a left diagonal" do
+            expect(board.is_entry_on_a_left_diagonal?("A","3")).to eq(false)
+            expect(board.is_entry_on_a_left_diagonal?("B","1")).to eq(false)
+            expect(board.is_entry_on_a_left_diagonal?("C","2")).to eq(false)
+        end
+        it "returns true if entry is on a left diagonal" do
+            expect(board.is_entry_on_a_left_diagonal?("A","1")).to eq(true)
+            expect(board.is_entry_on_a_left_diagonal?("B","2")).to eq(true)
+            expect(board.is_entry_on_a_left_diagonal?("C","3")).to eq(true)
+        end
+    end
+
     context "#get_row" do
         it "gets the correct board row after board is first created" do
             expect(board.get_row("A")).to eql(["","",""])

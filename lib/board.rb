@@ -9,8 +9,7 @@ class Board
     COL = {
         '1' => 0,
         '2' => 1,
-        '3' => 2
-}.freeze
+        '3' => 2 }.freeze
 
     def initialize
         @board_array = Array.new(3) { Array.new(3,"") }
@@ -69,7 +68,6 @@ class Board
     end
 
     def set_column(column, column_array)
-        #column_index = column_number.to_i - 1
         for row_index in 0..2
             @board_array[row_index][COL[column]] = column_array[row_index]
         end
