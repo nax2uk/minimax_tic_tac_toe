@@ -24,8 +24,11 @@ class Board
     end
 
     def set_elem(symbol, row, column)
-        @board_array[ROW[row]][column.to_i - 1] = symbol
-        #p @board_array[ROW[row]][column.to_i - 1]
+        if symbol == 'X' || 'O' || ''
+            @board_array[ROW[row]][column.to_i - 1] = symbol
+        else
+            raise ArgumentError.new("Input must 'X', 'O' or ''")
+        end
     end
 
     def get_row(row_letter)
@@ -42,7 +45,6 @@ class Board
         diagonal = []
         case direction
         when "left"
-            p @board_array[0][0]
             diagonal << @board_array[0][0] << @board_array[1][1] << @board_array[2][2]
         when "right"
             diagonal << @board_array[0][2] << @board_array[1][1] << @board_array[2][0]

@@ -26,6 +26,10 @@ describe Board do
         end
     end
     context "#set_elem" do
+        it "raises an error if symbol input is not 'X','O' or '' " do
+            expect { board.set_elem("t") }.to raise_error(ArgumentError)
+            board.draw_board
+        end
         it "sets the an 'X' at the correct location (A, 1) on the board" do
             expect do   
                 board.set_elem("X", "A", "1" )
