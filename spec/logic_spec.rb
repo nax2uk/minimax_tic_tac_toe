@@ -128,6 +128,7 @@ describe Logic do
                 board.set_entry("O","A","3")
                 board.set_entry("O","B","2")
                 board.set_entry("O","C","1")
+                board.draw_board
                 expect(logic.check_win_at_position?(board, "B", "2" )).to eq(true)
             end
         end
